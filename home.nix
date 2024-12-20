@@ -2,17 +2,16 @@
 let 
   username = "andrew";
   homeDirectory = "/home/andrew";
-  dotfilesDirectory = "${homeDirectory}/dotfiles";
 in
 {
   home = {
     inherit username homeDirectory;
 
     packages = with pkgs; [
-      hello
       tmux
+      neovim-unwrapped
 
-      # clu tools
+      # cli tools
       neofetch
       htop
       ripgrep
@@ -23,17 +22,19 @@ in
       jq
     ];
 
-    stateVersion = "24.11";
-  };
-
-  # manualy configured files
-  xdg.configFile = {
-    "nvim" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDirectory}/.config/nvim";
+    file.".config/nvim" = {
+      source = ./.config/nvim;
       recursive = true;
     };
+
+    stateVersion = "24.11";
   };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  programs.btop = {
+    enable = true;
+    settings.color_theme = "tokyo-night";
+  };
 }
