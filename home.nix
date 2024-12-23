@@ -5,17 +5,15 @@ let
 in
 {
   imports = [
-    modules/sh.nix
-    modules/tmux.nix
+    ./modules/sh.nix
+    ./modules/tmux.nix
+    ./modules/nvim.nix
   ];
 
   home = {
     inherit username homeDirectory;
 
     packages = with pkgs; [
-      # core
-      neovim-unwrapped
-
       # cli tools
       neofetch
       htop
@@ -32,11 +30,6 @@ in
       # fonts
       (nerdfonts.override { fonts = [ "JetBrainsMono" "Iosevka" "IosevkaTerm" "Meslo"]; })
     ];
-
-    file.".config/nvim" = {
-      source = ./.config/nvim;
-      recursive = true;
-    };
 
     stateVersion = "24.11";
   };
