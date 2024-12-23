@@ -6,13 +6,14 @@ in
 {
   imports = [
     modules/sh.nix
+    modules/tmux.nix
   ];
 
   home = {
     inherit username homeDirectory;
 
     packages = with pkgs; [
-      tmux
+      # core
       neovim-unwrapped
 
       # cli tools
@@ -24,6 +25,9 @@ in
       curl
       lazygit
       jq
+
+      #dev
+      rustup
 
       # fonts
       (nerdfonts.override { fonts = [ "JetBrainsMono" "Iosevka" "IosevkaTerm" "Meslo"]; })
