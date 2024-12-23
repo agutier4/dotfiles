@@ -1,9 +1,13 @@
 { config, lib, pkgs, ...}:
 let 
   username = "andrew";
-  homeDirectory = "/home/andrew";
+  homeDirectory = "/home/${username}";
 in
 {
+  imports = [
+    modules/sh.nix
+  ];
+
   home = {
     inherit username homeDirectory;
 
@@ -20,6 +24,9 @@ in
       curl
       lazygit
       jq
+
+      # fonts
+      (nerdfonts.override { fonts = [ "JetBrainsMono" "Iosevka" "IosevkaTerm" "Meslo"]; })
     ];
 
     file.".config/nvim" = {
@@ -30,11 +37,14 @@ in
     stateVersion = "24.11";
   };
 
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
-
-  programs.btop = {
-    enable = true;
-    settings.color_theme = "tokyo-night";
+  programs = {
+    home-manager.enable = true;
+    btop = {
+      enable = true;
+      settings.color_theme = "tokyo-night";
+    };
   };
+
+  fonts.fontconfig.enable = true;
+
 }
