@@ -10,9 +10,6 @@ let
 in {
   programs.zsh = {
     enable = true;
-    autosuggestion.enable = true;    
-    syntaxHighlighting.enable = true;
-    enableCompletion = true;
     shellAliases = aliases;
     oh-my-zsh = {
       enable = true;
