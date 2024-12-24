@@ -1,14 +1,21 @@
-{ config, lib, pkgs, ...}:
+{ config, lib, pkgs, ...} @args:
 let 
   username = "andrew";
   homeDirectory = "/home/${username}";
+  nixgl = args.nixgl;
 in
 {
   imports = [
     ./modules/sh.nix
     ./modules/tmux.nix
     ./modules/nvim.nix
+    ./modules/alacritty.nix
   ];
+
+  nixGL = {
+    packages = nixgl.packages;
+    defaultWrapper = "mesa";
+  };
 
   home = {
     inherit username homeDirectory;
