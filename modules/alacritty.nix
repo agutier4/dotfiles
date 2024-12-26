@@ -5,9 +5,10 @@
       enable = true;
       settings = {
         general.import = [ "${pkgs.alacritty-theme}/tokyo_night.toml" ];
+        env.term = "screen-256color";
         window = {
           startup_mode = "Maximized";
-          opacity = 0.8;
+          opacity = 0.85;
         };
         font = {
           size = 9;

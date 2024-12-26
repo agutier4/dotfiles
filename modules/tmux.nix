@@ -21,9 +21,9 @@ in
     prefix = "C-s";
     mouse = true;
     keyMode = "vi";
-    terminal = "screen-256color";
     extraConfig = ''
-      set -as terminal-features ",xterm-256color:RGB"
+      set-option -ga terminal-overrides ",alacritty:Tc"
+      set -g default-terminal "alacritty"
       set-environment -g COLORTERM "truecolor"
       set -g allow-rename on
     '';

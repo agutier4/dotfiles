@@ -17,6 +17,8 @@ in
     defaultWrapper = "mesa";
   };
 
+  targets.genericLinux.enable = true;
+
   home = {
     inherit username homeDirectory;
 
