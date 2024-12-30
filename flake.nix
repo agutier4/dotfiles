@@ -1,5 +1,5 @@
 {
-  description = "Home Manager config";
+  description = "NixOS/Home Manager config";
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-24.11";
@@ -24,6 +24,13 @@
         overlays = [ nixgl.overlay ];
       };
     in {
+      nixosConfigurations = {
+        jupiter-nixos = lib.nixosSystem {
+          inherit system;
+          modules = [ ./configuration.nix ]; 
+        };
+      }; 
+
       homeConfigurations = {
         andrew = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;

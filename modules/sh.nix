@@ -26,11 +26,14 @@ in {
         src = ../.config/p10k;
         file = "p10k.zsh";
       }
+      /*
+      # signiificant increases startup time
       {
         name = "ros2-zsh";
         src = ../.config/ros2-zsh;
         file = "ros2.zsh";
       }
+      */
     ];
   };
 

@@ -2,6 +2,8 @@
 let 
   username = "andrew";
   homeDirectory = "/home/${username}";
+  name = "Andrew Gutierrez";
+  email = "agut@comcast.net";
   nixgl = args.nixgl;
 in
 {
@@ -48,6 +50,11 @@ in
     btop = {
       enable = true;
       settings.color_theme = "tokyo-night";
+    };
+    git = {
+      enable = true;
+      userName = name;
+      userEmail = email; 
     };
   };
 

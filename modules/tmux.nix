@@ -26,6 +26,10 @@ in
       set -g default-terminal "alacritty"
       set-environment -g COLORTERM "truecolor"
       set -g allow-rename on
+      bind-key h select-pane -L
+      bind-key j select-pane -D
+      bind-key k select-pane -U
+      bind-key l select-pane -R
     '';
 
     plugins = [
