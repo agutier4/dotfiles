@@ -12,6 +12,7 @@ in
     ./modules/tmux.nix
     ./modules/nvim.nix
     ./modules/alacritty.nix
+    ./modules/hyprland.nix
   ];
 
   nixGL = {
