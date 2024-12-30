@@ -121,7 +121,7 @@
 
     #hyprland
     hyprpaper
-    wofi
+    fuzzel
     waybar
   ];
   environment.shells = with pkgs; [ zsh ];
