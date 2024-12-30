@@ -4,6 +4,8 @@
     # add the package
     packages = [
       pkgs.neovim-unwrapped
+      pkgs.wl-clipboard
+      pkgs.xclip
     ];
 
     # copy in exising config

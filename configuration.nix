@@ -79,6 +79,8 @@
     #media-session.enable = true;
   };
 
+  services.blueman.enable = true;
+
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
@@ -118,6 +120,7 @@
     vim
     wget
     alacritty
+    pavucontrol
 
     #hyprland
     hyprpaper
