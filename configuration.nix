@@ -97,6 +97,7 @@
   };
 
   services.blueman.enable = true;
+  services.playerctld.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
@@ -137,8 +138,10 @@
     vim
     wget
     alacritty
-    pavucontrol
     font-awesome
+
+    pavucontrol
+    brightnessctl
 
     #hyprland
     hyprpaper
