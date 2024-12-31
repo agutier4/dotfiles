@@ -138,6 +138,7 @@
     wget
     alacritty
     pavucontrol
+    font-awesome
 
     #hyprland
     hyprpaper

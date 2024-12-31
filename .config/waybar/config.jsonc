@@ -1,0 +1,131 @@
+{
+    "layer": "top", // Waybar at top layer
+    "position": "top", // Waybar position (top|bottom|left|right)
+    "height": 32, // Waybar height (to be removed for auto height)
+    "margin-top": 0,
+    "margin-left": 0,
+    "margin-right": 0,
+    "spacing": 2, // Gaps between modules (4px)
+
+    // Choose the order of the modules
+    "modules-left": ["custom/launcher", "hyprland/workspaces", "hyprland/window"],
+    "modules-center": ["clock", "custom/notifications" ],
+    "modules-right": ["tray",  "pulseaudio",  "battery", "cpu", "memory", "network"],
+
+    // Modules configuration
+    "hyprland/workspaces": {
+      "disable-scroll": true,
+      "on-click": "activate",
+      "persistent-workspaces":{
+        "*":4
+      },
+      "all-outputs": true,
+      "warp-on-scroll": false,
+      "format": "{icon}{name}</span>",
+      "format-icons": {
+        "active": "<span color=\"#000022\">",
+        "default": "<span>"
+      }
+    },
+
+    "hyprland/window": {
+      "format": "{class}",
+	    "max-length": 32
+    },
+
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10
+    },
+
+    "clock": {
+      "format": "{:%b %d   %I:%M %p}",
+      "tooltip-format": "<tt><big>{calendar}</big></tt>",
+      "interval": 1
+    },
+
+    "cpu": {
+      "interval": 10,
+      "format": "   {usage}%",
+      "max-length": 10,
+      "on-click": "alacritty -e btop" 
+    },
+
+    "memory": {
+      "interval": 30,
+      "format": "   {}%",
+      "max-length": 10,
+      "on-click": "alacritty -e btop" 
+    },
+
+    "battery": {
+      "states": {
+        "good": 95,
+        "warning": 15,
+        "critical": 5
+      },
+      "format": "{icon}",
+      "format-charging": "<span color=\"#58d145\">{icon}</span> {capacity}%",
+      "format-plugged": "<span color=\"#58d145\"></span> {capacity}%",
+      "format-alt": "{icon} {capacity}%",
+      "tooltip-format": "{capacity}% ({time})",
+      "format-good": "<span color=\"#00ff00\">{icon}</span> {capacity}%",
+      "format-warning": "<span color=\"#00ff00\">{icon}</span> {capacity}%",
+      "format-full": "<span color=\"#22d3f2\">{icon}</span> {capacity}%",
+      "format-icons": ["", "", "", "", ""],
+      "interval": 5
+    },
+
+    "network": {
+        "format-wifi": "",
+        "format-ethernet": "",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "<span color=\"#707880\">󰖪</span>",
+        "tooltip-format": "󰕒   {bandwidthUpBytes}   󰇚   {bandwidthDownBytes}",
+        "tooltip-format-wifi": "{signalStrength}% ({essir})"
+     },
+
+    "pulseaudio": {
+        "scroll-step": 5, // %, can be a float
+        "format": "{icon}",
+        "tooltip-format": "{volume}% ({desc})",
+        "format-bluetooth": "<span color=\"#9a0eeb\">{icon}</span> {volume}%",
+        "format-bluetooth-muted": "<span color=\"#707880\">{icon} </span>",
+        "format-muted": "<span color=\"#707880\"></span>",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+
+    // custom modules
+    "custom/launcher": {
+	    "format": "",
+	    "tooltip": true,
+        "tooltip-format": "App Launcher",
+	    "on-click": "fuzzel"
+    },
+
+    "custom/notifications": {
+	    "format": "",
+	    "format-alt": "<span color=\"#808080\"></span>",
+	    "tooltip": false,
+	    "on-click": "dunstctl set-paused toggle"
+    }
+}
