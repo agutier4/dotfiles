@@ -1,0 +1,25 @@
+/* tokyonight theme based on tokyonight.nvim
+ * https://github.com/folke/tokyonight.nvim/tree/main */
+@define-color background-color #1a1b26;
+@define-color foreground-color #c0caf5;
+
+@define-color black-normal-color#15161e;
+@define-color red-normal-color #f7768e;
+@define-color green-normal-color #9ece6a;
+@define-color yellow-normal-color #e0af68;
+@define-color blue-normal-color #7aa2f7;
+@define-color magenta-normal-color #bb9af7;
+@define-color cyan-normal-color #7dcfff;
+@define-color white-normal-color #a9b1d6;
+
+@define-color black-bold-color #414868;
+@define-color red-bold-color #ff899d;
+@define-color green-bold-color #9fe044;
+@define-color yellow-bold-color #faba4a;
+@define-color blue-bold-color #8db0ff;
+@define-color magenta-bold-color #c7a9ff;
+@define-color cyan-bold-color #a4daff;
+@define-color white-bold-color #c0caf5;
+
+@define-color warn-color #ff9e64;
+@define-color err-color #db4b4b;

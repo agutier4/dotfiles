@@ -1,37 +1,87 @@
 {
-    "layer": "top", // Waybar at top layer
-    "position": "top", // Waybar position (top|bottom|left|right)
-    "height": 32, // Waybar height (to be removed for auto height)
-    "margin-top": 0,
-    "margin-left": 0,
-    "margin-right": 0,
-    "spacing": 2, // Gaps between modules (4px)
+  // Top level waybar configuration
+  "layer": "top",
+  "position": "top",
+  "height": 32,
+  "margin-top": 0,
+  "margin-left": 0,
+  "margin-right": 0,
+  "spacing": 2, // Gaps between modules (4px)
 
-    // Choose the order of the modules
-    "modules-left": ["custom/launcher", "hyprland/workspaces", "hyprland/window"],
-    "modules-center": ["clock", "custom/notifications" ],
-    "modules-right": ["tray",  "pulseaudio",  "battery", "cpu", "memory", "network"],
+  // Module layout
+  "modules-left": ["custom/launcher", "hyprland/workspaces", "hyprland/window"],
+  "modules-center": ["clock"],
+  "modules-right": ["tray",  "pulseaudio",  "battery", "network", "custom/power"],
 
-    // Modules configuration
-    "hyprland/workspaces": {
-      "disable-scroll": true,
-      "on-click": "activate",
-      "persistent-workspaces":{
-        "*":4
-      },
-      "all-outputs": true,
-      "warp-on-scroll": false,
-      "format": "{icon}{name}</span>",
-      "format-icons": {
-        "active": "<span color=\"#000022\">",
-        "default": "<span>"
+  //Left modules configuration
+  "custom/launcher": {
+    "format": "",
+    "tooltip": true,
+      "tooltip-format": "App Launcher",
+    "on-click": "fuzzel"
+  },
+  "hyprland/workspaces": {
+    "disable-scroll": true,
+    "on-click": "activate",
+    "persistent-workspaces":{
+      "*":4
+    },
+    "all-outputs": true,
+    "warp-on-scroll": false,
+    "format": "{icon}{name}</span>",
+    "format-icons": {
+      "active": "<span color=\"#000022\">",
+      "default": "<span>"
+    }
+  },
+  "hyprland/window": {
+    "format": "{class}",
+    "icon": true,
+    "icon-size": 16,
+    "max-length": 32
+  },
+
+  // Center modules configuration
+  "clock": {
+    "format": "{:%b %e   %I:%M %p}",
+    "tooltip-format": "<tt><big>{calendar}</big></tt>",
+    "interval": 1,
+    "calendar": {
+      "on-scroll": 1,
+      "format": {
+        "weekdays":"<span color='#9ece6a'><b><u>{}</u></b></span>",
+        "today":"<span color='#f7768e'><b><u>{}</u></b></span>"
       }
+    }
+  },
+
+
+  // Right modules configuration
+
+
+
+
+
+    "custom/notifications": {
+	    "format": "",
+	    "format-alt": "<span color=\"#808080\"></span>",
+	    "tooltip": false,
+	    "on-click": "dunstctl set-paused toggle"
     },
 
-    "hyprland/window": {
-      "format": "{class}",
-	    "max-length": 32
+
+    "custom/power": {
+      "format": "⏻",
+      "tooltip": false,
+      "on-click": ""
     },
+
+
+
+
+
+
+
 
     "idle_inhibitor": {
         "format": "{icon}",
@@ -46,11 +96,6 @@
         "spacing": 10
     },
 
-    "clock": {
-      "format": "{:%b %d   %I:%M %p}",
-      "tooltip-format": "<tt><big>{calendar}</big></tt>",
-      "interval": 1
-    },
 
     "cpu": {
       "interval": 10,
@@ -86,8 +131,8 @@
 
     "network": {
         "format-wifi": "",
-        "format-ethernet": "",
-        "format-linked": "{ifname} (No IP) ",
+        "format-ethernet": "",
+        "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "<span color=\"#707880\">󰖪</span>",
         "tooltip-format": "󰕒   {bandwidthUpBytes}   󰇚   {bandwidthDownBytes}",
         "tooltip-format-wifi": "{signalStrength}% ({essir})"
@@ -97,9 +142,8 @@
         "scroll-step": 5, // %, can be a float
         "format": "{icon}",
         "tooltip-format": "{volume}% ({desc})",
-        "format-bluetooth": "<span color=\"#9a0eeb\">{icon}</span> {volume}%",
-        "format-bluetooth-muted": "<span color=\"#707880\">{icon} </span>",
-        "format-muted": "<span color=\"#707880\"></span>",
+        "format-bluetooth": "<span color=\"#bb9af7\">{icon}</span> {volume}%",
+        "format-muted": "<span color=\"#f7768e\"></span>",
         "format-source": "{volume}% ",
         "format-source-muted": "",
         "format-icons": {
@@ -112,20 +156,5 @@
             "default": ["", ""]
         },
         "on-click": "pavucontrol"
-    },
-
-    // custom modules
-    "custom/launcher": {
-	    "format": "",
-	    "tooltip": true,
-        "tooltip-format": "App Launcher",
-	    "on-click": "fuzzel"
-    },
-
-    "custom/notifications": {
-	    "format": "",
-	    "format-alt": "<span color=\"#808080\"></span>",
-	    "tooltip": false,
-	    "on-click": "dunstctl set-paused toggle"
     }
 }
